@@ -15,7 +15,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                </div>
+                    <x-nav-link :href="route('repair-device-form')" :active="request()->routeIs('repair-device-form')">
+                        {{ __('Repair Device Form') }}
+                    </x-nav-link>
+                </div>      
             </div>
 
             <!-- Settings Dropdown -->
@@ -69,6 +72,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('repair-device-form')" :active="request()->routeIs('repair-device-form')">
+                {{ __('Repair Device Form') }}
             </x-responsive-nav-link>
         </div>
 
