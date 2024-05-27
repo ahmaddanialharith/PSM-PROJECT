@@ -5,19 +5,26 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                <a href="{{ Auth::user()->role === 'admin' ? route('admin') : route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                @if (Auth::user() && Auth::user()->role === 'admin')
+                        <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                            {{ __('Admin Dashboard') }}
+                        </x-nav-link>
+                        <!-- Add more admin-specific navigation links here -->
+                    @else
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('repair-device-form')" :active="request()->routeIs('repair-device-form')">
                         {{ __('Repair Device Form') }}
                     </x-nav-link>
+                @endif
                 </div>      
             </div>
 
@@ -70,12 +77,19 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+        @if (Auth::user() && Auth::user()->role === 'admin')
+                <x-responsive-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
+                    {{ __('Admin Dashboard') }}
+                </x-responsive-nav-link>
+                <!-- Add more admin-specific responsive navigation links here -->
+            @else
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Home') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('repair-device-form')" :active="request()->routeIs('repair-device-form')">
                 {{ __('Repair Device Form') }}
             </x-responsive-nav-link>
+        @endif
         </div>
 
         <!-- Responsive Settings Options -->
