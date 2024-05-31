@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/repair', [RepairControllerTab::class, 'showInterface'])->name('repair-device-form');
-   
+    Route::post('/submit-repair-form', [RepairControllerTab::class, 'store'])->name('repair-form.store');
 
 });     
 
