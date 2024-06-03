@@ -16,14 +16,21 @@
                         <x-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
                             {{ __('Admin Dashboard') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('EditSigt')" :active="request()->routeIs('EditSigt')">
+                            {{ __('Edit Sigt') }}
+                        </x-nav-link>
                         <!-- Add more admin-specific navigation links here -->
                     @else
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('repair-device-form')" :active="request()->routeIs('repair-device-form')">
-                        {{ __('Repair Device Form') }}
+                        {{ __('Repair Form') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('sigt')" :active="request()->routeIs('sigt')">
+                        {{ __('View Sigt') }}
+                    </x-nav-link>
+
                 @endif
                 </div>      
             </div>
@@ -81,13 +88,19 @@
                 <x-responsive-nav-link :href="route('admin')" :active="request()->routeIs('admin')">
                     {{ __('Admin Dashboard') }}
                 </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('EditSigt')" :active="request()->routeIs('EditSigt')">
+                    {{ __('Edit Sigt') }}
+                </x-responsive-nav-link>
                 <!-- Add more admin-specific responsive navigation links here -->
             @else
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Home') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('repair-device-form')" :active="request()->routeIs('repair-device-form')">
-                {{ __('Repair Device Form') }}
+                {{ __('Repair Form') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('sigt')" :active="request()->routeIs('sigt')">
+                {{ __('View Sigt') }}
             </x-responsive-nav-link>
         @endif
         </div>
