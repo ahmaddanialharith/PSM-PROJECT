@@ -15,17 +15,17 @@
                     <img src="{{ asset('storage/' . $tutorial->image) }}" alt="{{ $tutorial->title }}" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h2 class="text-xl font-semibold mb-2">{{ $tutorial->title }}</h2>
-                        <ul class="list-disc list-inside">
+                        <ul class="list-decimal list-inside">
                             @foreach($tutorial->steps as $step)
-                                <li class="mb-2">{{ $step->step_number }}. {{ $step->description }}</li>
+                                <li class="mb-2">{{ $step->description }}</li>
                             @endforeach
                         </ul>
                         <div class="flex justify-end mt-4">
-                            <button type="button" class="bg-yellow-500 text-white px-4 py-2 rounded" onclick="editTutorial({{ $tutorial->toJson() }})">Edit</button>
+                            <button type="button" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded" onclick="editTutorial({{ $tutorial->toJson() }})">Edit</button>
                             <form action="{{ route('admin.tutorials.destroy', $tutorial) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded ml-2">Delete</button>
+                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded ml-2">Delete</button>
                             </form>
                         </div>
                     </div>
@@ -52,8 +52,8 @@
                         <textarea name="steps[]" class="w-full p-2 border border-gray-300 rounded" rows="3" required></textarea>
                     </div>
                 </div>
-                <button type="button" onclick="addStep()" class="bg-blue-500 text-white px-4 py-2 rounded">Add Step</button>
-                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded ml-4">Save</button>
+                <button type="button" onclick="addStep()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Add Step</button>
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded ml-4">Save</button>
             </form>
         </div>
     </div>

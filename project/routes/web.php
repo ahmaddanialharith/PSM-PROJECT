@@ -47,3 +47,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/admin', [AdminController::class, 'ShowInterface'])->middleware(['auth', 'verified' , 'admin'])->name('admin');
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'showRepairForms'])->name('admin');
