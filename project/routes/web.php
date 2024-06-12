@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\RepairControllerTab;
+use App\Http\Controllers\RepairController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SigtController;
@@ -22,8 +22,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/repair', [RepairControllerTab::class, 'showInterface'])->name('repair-device-form');
-    Route::post('/submit-repair-form', [RepairControllerTab::class, 'store'])->name('repair-form.store');
+    Route::get('repairs/form', [RepairController::class, 'showInterface'])->name('repair-device-form');
+    Route::post('/repair-device-store', [RepairController::class, 'store'])->name('repair-device.store');
 
     //for sigt controller route
     Route::get('/Sigt', [SigtController::class, 'index'])->name('sigt');
