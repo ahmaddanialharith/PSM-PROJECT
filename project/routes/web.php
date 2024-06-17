@@ -41,10 +41,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/tutorials', [EditSigtController::class, 'showInterface'])->name('admin.tutorials.index');
     Route::post('/admin/tutorials', [EditSigtController::class, 'storeOrUpdate'])->name('admin.tutorials.storeOrUpdate');
     Route::delete('/admin/tutorials/{tutorial}', [EditSigtController::class, 'destroy'])->name('admin.tutorials.destroy');
+
+    //Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    // Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified' , 'admin'])->name('admin');
+    // Route::get('/admin/view/{id}', [AdminController::class, 'show'])->name('admin-view');
+    // Route::patch('/admin/{id}', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
+
+});
+
+Route::middleware(['auth', 'verified', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/view/{id}', [AdminController::class, 'show'])->name('admin-view');
+    Route::patch('/admin/{id}', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
 });
 
 
 require __DIR__.'/auth.php';
 
-Route::get('/admin', [AdminController::class, 'ShowInterface'])->middleware(['auth', 'verified' , 'admin'])->name('admin');
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'showRepairForms'])->name('admin');
+
