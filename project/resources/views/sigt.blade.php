@@ -1,7 +1,7 @@
     <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Sigt') }}
+        <h2 class="font-semibold text-3xl text-white leading-tight bg-gradient-to-r from-orange-500 to-yellow-500 p-4 rounded-lg shadow-md">
+            {{ __('Smartphone Issue Guide Tutorial') }}
         </h2>
     </x-slot>
 

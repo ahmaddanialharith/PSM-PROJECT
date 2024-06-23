@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Device;
 use App\Models\Report;
+use Illuminate\Support\Facades\Auth;
 
 class RepairController extends Controller
 {
@@ -59,7 +60,7 @@ class RepairController extends Controller
 
         // Create a new report
         $report = Report::create([
-            'customer_id' => $customer->id,
+            'customer_id' => Auth::id(),
             'device_id' => $device->id,
             'problem_description' => $validatedData['problem_description'],
             'previous_repairs' => $request->previous_repairs,

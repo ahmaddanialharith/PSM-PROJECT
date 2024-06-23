@@ -56,4 +56,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Chat Us Button -->
+    <a href="{{ url('/chatify') }}" class="chat-us-button">Chat</a>
+
+    <!-- Include the button's styles -->
+    <style>
+        .chat-us-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .chat-us-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </x-app-layout>

@@ -5,6 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SigtController;
 use App\Http\Controllers\EditSigtController;
+use App\Http\Controllers\DashboardController;
+use Chatify\Http\Controllers\MessagesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,10 +14,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        $dashboardController = new DashboardController();
+        
+        // Get the welcome message view
+        $welcomeView = $dashboardController->welcome()->render();
+        
+        // Get the reports data and view
+        $reportsView = $dashboardController->reports();
+        $reports = $reportsView->getData()['reports'];
 
+        // Return the combined view
+        return view('dashboard', compact('welcomeView', 'reports'));
+    })->name('dashboard');
+});
+
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::get('/chatify', [MessagesController::class, 'index'])->name('chatify');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
