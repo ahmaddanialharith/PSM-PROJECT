@@ -114,7 +114,7 @@
                             </div>
                         </form>
                         <div class="mt-6">
-                        <a href="{{ route('admin') }}" class="text-sm text-gray-500 underline">← Back to Admin Dashboard</a>
+                        <a href="{{ route('admin') }}" class="text-sm text-gray-500 underline">← Back to Dashboard</a>
                     </div>
                     </div>
                 </div>

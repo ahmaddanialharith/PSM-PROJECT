@@ -34,4 +34,10 @@ class Report extends Model
     {
         return $this->belongsTo(Device::class);
     }
+
+    public function invoice()
+    {
+        return $this->hasOne(Invoice::class);
+    }
+    
 }

@@ -19,6 +19,9 @@
                         <x-nav-link :href="route('EditSigt')" :active="request()->routeIs('EditSigt')">
                             {{ __('Edit Sigt') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('geninvoice')" :active="request()->routeIs('geninvoice')">
+                            {{ __('Invoice Management') }}
+                        </x-nav-link>
                         <!-- Add more admin-specific navigation links here -->
                     @else
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -90,6 +93,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('EditSigt')" :active="request()->routeIs('EditSigt')">
                     {{ __('Edit Sigt') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('geninvoice')" :active="request()->routeIs('geninvoice')">
+                    {{ __('Invoice Management') }}
                 </x-responsive-nav-link>
                 <!-- Add more admin-specific responsive navigation links here -->
             @else

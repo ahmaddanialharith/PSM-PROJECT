@@ -7,6 +7,7 @@ use App\Http\Controllers\SigtController;
 use App\Http\Controllers\EditSigtController;
 use App\Http\Controllers\DashboardController;
 use Chatify\Http\Controllers\MessagesController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -50,6 +51,15 @@ Route::middleware('auth')->group(function () {
     
 
     Route::get('/EditSigt', [EditSigtController::class, 'showInterface'])->name('EditSigt');
+
+    //invoice route
+    Route::get('/admin/completed-reports', [InvoiceController::class, 'showCompletedReports'])->name('geninvoice');
+    Route::post('/admin/generate-receipt', [InvoiceController::class, 'generateReceipt'])->name('invoice');
+    Route::post('/admin/save-invoice/{id}', [InvoiceController::class, 'saveInvoice'])->name('saveInvoice');
+    Route::get('/admin/view-invoice/{id}', [InvoiceController::class, 'viewReceipt'])->name('view-invoice');
+
+
+
 
 }); 
 
