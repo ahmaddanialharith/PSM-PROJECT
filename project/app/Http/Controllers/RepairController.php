@@ -23,7 +23,7 @@ class RepairController extends Controller
         $validatedData = $request->validate([
             'full_name' => 'required|string|max:255',
             'contact_number' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:customers',
+            'email' => 'required|string|email|max:255|unique:customers,email,' . Auth::id(),
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:255',
             'device_brand' => 'nullable|string|max:255',
@@ -33,16 +33,22 @@ class RepairController extends Controller
             'pictures' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // Create a new customer
-        $customer = Customer::create([
-            'full_name' => $validatedData['full_name'],
-            'contact_number' => $validatedData['contact_number'],
-            'email' => $validatedData['email'],
-            'address' => $validatedData['address'],
-            'area' => 'labis',
-            'state' => 'Johor',
-            'postal_code' => $validatedData['postal_code'],
-        ]);
+        // Retrieve the authenticated user
+        $user = Auth::user();
+
+        // Create or update the customer
+        $customer = Customer::updateOrCreate(
+            ['id' => $user->id],
+            [
+                'full_name' => $validatedData['full_name'],
+                'contact_number' => $validatedData['contact_number'],
+                'email' => $validatedData['email'],
+                'address' => $validatedData['address'],
+                'area' => 'labis',
+                'state' => 'Johor',
+                'postal_code' => $validatedData['postal_code'],
+            ]
+        );
 
         // Create a new device
         $device = Device::create([
@@ -60,7 +66,7 @@ class RepairController extends Controller
 
         // Create a new report
         $report = Report::create([
-            'customer_id' => Auth::id(),
+            'customer_id' => $customer->id, // Use the authenticated user's ID Auth::id(),
             'device_id' => $device->id,
             'problem_description' => $validatedData['problem_description'],
             'previous_repairs' => $request->previous_repairs,

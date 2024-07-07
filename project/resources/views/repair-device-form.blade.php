@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-3xl text-white leading-tight bg-gradient-to-r from-orange-500 to-yellow-500 p-4 rounded-lg shadow-md">
+        <h2 class="font-semibold text-xl text-white leading-tight bg-gradient-to-r from-orange-500 to-yellow-500 p-4 rounded-lg shadow-md">
             {{ __('Repair Form') }}
         </h2>
     </x-slot>

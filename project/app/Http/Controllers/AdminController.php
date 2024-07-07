@@ -58,4 +58,26 @@ class AdminController extends Controller
 
         return redirect()->route('admin')->with('success', 'Report status updated successfully.');
     }
+
+    // Method to search for reports
+    public function search(Request $request)
+    {
+        $query = $request->input('search');
+        
+        // Perform the search query
+        $reports = Report::whereHas('customer', function($q) use ($query) {
+                        $q->where('full_name', 'LIKE', "%{$query}%");
+                    })
+                    ->orWhereHas('device', function($q) use ($query) {
+                        $q->where('brand', 'LIKE', "%{$query}%")
+                          ->orWhere('model', 'LIKE', "%{$query}%");
+                    })
+                    ->orWhere('status', 'LIKE', "%{$query}%")
+                    ->get();
+
+        // Return the view with the filtered reports
+        return view('adminsearch', compact('reports'))->render();
+    }
 }
+
+

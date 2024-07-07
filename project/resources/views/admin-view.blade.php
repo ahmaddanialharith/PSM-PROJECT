@@ -72,7 +72,7 @@
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Warranty Information</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-8">
                             <div>
-                                <p><span class="font-semibold text-gray-800">Is the Device Under Warranty?:</span> {{ $report->under_warranty }}</p>
+                                <p><span class="font-semibold text-gray-800">Is the Device Under Warranty:</span> {{ $report->under_warranty }}</p>
                             </div>
                             <div>
                                 <p><span class="font-semibold text-gray-800">Warranty Provider:</span> {{ $report->warranty_provider }}</p>
@@ -85,11 +85,11 @@
                         <h3 class="text-2xl font-bold text-gray-900 mb-4">Data and Privacy</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-x-8">
                             <div>
-                                <p><span class="font-semibold text-gray-800">Is Data Backup Required?:</span> {{ $report->data_backup_required }}</p>
+                                <p><span class="font-semibold text-gray-800">Is Data Backup Required:</span> {{ $report->data_backup_required }}</p>
                                 <p><span class="font-semibold text-gray-800">Consent to Data Wipe if Necessary:</span> {{ $report->data_wipe_consent }}</p>
                             </div>
                             <div>
-                                <p><span class="font-semibold text-gray-800">Any Sensitive Data to be Aware of?:</span> {{ $report->sensitive_data }}</p>
+                                <p><span class="font-semibold text-gray-800">Any Sensitive Data to be Aware of:</span> {{ $report->sensitive_data }}</p>
                             </div>
                         </div>
                     </div>

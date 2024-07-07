@@ -17,10 +17,13 @@
                             {{ __('Admin Dashboard') }}
                         </x-nav-link>
                         <x-nav-link :href="route('EditSigt')" :active="request()->routeIs('EditSigt')">
-                            {{ __('Edit Sigt') }}
+                            {{ __('Manage SIGT') }}
                         </x-nav-link>
                         <x-nav-link :href="route('geninvoice')" :active="request()->routeIs('geninvoice')">
                             {{ __('Invoice Management') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('sales')" :active="request()->routeIs('sales')">
+                            {{ __('Sales Report') }}
                         </x-nav-link>
                         <!-- Add more admin-specific navigation links here -->
                     @else
@@ -32,6 +35,9 @@
                     </x-nav-link>
                     <x-nav-link :href="route('sigt')" :active="request()->routeIs('sigt')">
                         {{ __('View Sigt') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('userreports')" :active="request()->routeIs('userreports')">
+                        {{ __('Report History & Invoice') }}
                     </x-nav-link>
 
                 @endif
@@ -92,10 +98,13 @@
                     {{ __('Admin Dashboard') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('EditSigt')" :active="request()->routeIs('EditSigt')">
-                    {{ __('Edit Sigt') }}
+                    {{ __('Manage SIGT') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('geninvoice')" :active="request()->routeIs('geninvoice')">
                     {{ __('Invoice Management') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('sales')" :active="request()->routeIs('sales')">
+                    {{ __('Sales Report') }}
                 </x-responsive-nav-link>
                 <!-- Add more admin-specific responsive navigation links here -->
             @else
@@ -107,6 +116,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('sigt')" :active="request()->routeIs('sigt')">
                 {{ __('View Sigt') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('userreports')" :active="request()->routeIs('userreports')">
+                {{ __('Report History & Invoice') }}
             </x-responsive-nav-link>
         @endif
         </div>

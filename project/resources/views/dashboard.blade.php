@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-3xl text-white leading-tight bg-gradient-to-r from-orange-400 to-yellow-400 p-4 rounded-lg shadow-md">
+        <h2 class="font-semibold text-xl text-white leading-tight bg-gradient-to-r from-orange-500 to-yellow-500 p-4 rounded-lg shadow-md">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white rounded-lg shadow-xl">
                 <div class="bg-gradient-to-r from-orange-400 to-yellow-400 p-8 rounded-t-lg">
-                    <h3 class="text-3xl font-extrabold text-white mb-6">Your Report Status</h3>
+                    <h3 class="text-xl font-extrabold text-white mb-6">Your Report Status</h3>
                     @if(isset($reports))
                         @foreach ($reports as $report)
                             <div class="mb-6 p-6 bg-white border border-gray-200 rounded-lg shadow-md relative">

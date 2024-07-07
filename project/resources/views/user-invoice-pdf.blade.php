@@ -3,6 +3,7 @@
 <head>
     <title>Invoice</title>
     <style>
+        /* Include your styles here */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -60,18 +61,6 @@
             margin-bottom: 10px;
         }
 
-        .invoice-info {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            text-align: right;
-        }
-
-        .invoice-info label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -101,26 +90,21 @@
             color: red;
         }
 
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #ff9800;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+        .top-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: right;
         }
 
-        .back-button:hover {
-            background-color: #e68900;
+        .top-right label {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="invoice-container">
-        <div class="invoice-info">
+        <div class="top-right">
             <label>Invoice No: {{ $invoice->invoice_no }}</label>
             <label>Date: {{ $invoice->created_at->toDateString() }}</label>
         </div>
@@ -136,7 +120,7 @@
             <h1>Invoice</h1>
         </div>
         <div class="details">
-            <label>Bill to: {{ $report->customer->address }}</label>
+            <label>Bill to: {{ $invoice->report->customer->address }}</label>
         </div>
         <table>
             <thead>
@@ -164,8 +148,6 @@
         <div class="note">
             <p>You can make the payment once your smartphone is delivered to you via cash, bank transfer, or QR Code.</p>
         </div>
-        <!-- Back button -->
-        <a href="{{ route('geninvoice') }}" class="back-button">← Back</a>
     </div>
 </body>
 </html>

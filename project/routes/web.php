@@ -8,6 +8,8 @@ use App\Http\Controllers\EditSigtController;
 use App\Http\Controllers\DashboardController;
 use Chatify\Http\Controllers\MessagesController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\UserInvoiceController;
+use App\Http\Controllers\SalesReportController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -57,9 +59,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/generate-receipt', [InvoiceController::class, 'generateReceipt'])->name('invoice');
     Route::post('/admin/save-invoice/{id}', [InvoiceController::class, 'saveInvoice'])->name('saveInvoice');
     Route::get('/admin/view-invoice/{id}', [InvoiceController::class, 'viewReceipt'])->name('view-invoice');
+    Route::get('/searchReports', [InvoiceController::class, 'searchReports'])->name('searchReports');
 
 
+    Route::get('/user/reports', [UserInvoiceController::class, 'index'])->name('userreports');
+    Route::get('/user/invoice/{id}', [UserInvoiceController::class, 'show'])->name('user-invoice-pdf');
+    Route::get('/user/invoice/download/{id}', [UserInvoiceController::class, 'download'])->name('user.invoice.download');
+    Route::get('/search-user-reports', [UserInvoiceController::class, 'search'])->name('search');
 
+    Route::get('sales', [SalesReportController::class, 'index'])->name('sales');
+    Route::get('sales/download', [SalesReportController::class, 'download'])->name('sales.download');
+    
 
 }); 
 
@@ -80,6 +90,8 @@ Route::middleware(['auth', 'verified', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/view/{id}', [AdminController::class, 'show'])->name('admin-view');
     Route::patch('/admin/{id}', [AdminController::class, 'updateStatus'])->name('admin.updateStatus');
+    Route::get('/search-reports', [AdminController::class, 'search'])->name('search-reports');
+
 });
 
 

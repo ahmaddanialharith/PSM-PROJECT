@@ -1,12 +1,11 @@
     <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-3xl text-white leading-tight bg-gradient-to-r from-orange-500 to-yellow-500 p-4 rounded-lg shadow-md">
+        <h2 class="font-semibold text-xl text-white leading-tight bg-gradient-to-r from-orange-500 to-yellow-500 p-4 rounded-lg shadow-md">
             {{ __('Smartphone Issue Guide Tutorial') }}
         </h2>
     </x-slot>
 
     <div class="container mx-auto py-6">
-        <h1 class="text-3xl font-bold mb-6">Tutorials</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($tutorials as $tutorial)
